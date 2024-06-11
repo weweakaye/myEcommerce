@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="Fflogo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionFusion - Checkout</title>
+    <link rel="stylesheet" href="stylee.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #c6ddff; /* Updated */
+            color: #333;
+            margin: 0;
+        }
+
+        .checkout {
+            padding: 120px 20px 50px;
+            background-color: #c6ddff; /* Updated */
+            min-height: 100vh;
+            margin-left: 1in; /* Updated */
+            margin-right: 1in; /* Updated */
+        }
+
+        .center-text h2 {
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        .checkout-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-img {
+            width: 100px;
+            height: auto;
+        }
+
+        .cart-text {
+            flex: 1;
+            padding-left: 15px;
+        }
+
+        .cart-text h5 {
+            margin: 0;
+            font-size: 18px;
+            color: #1a1a2e;
+        }
+
+        .cart-text p {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .quantity input {
+            width: 50px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+        .remove-item {
+            margin-left: 15px;
+        }
+
+        .remove-item .btn {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remove-item .btn:hover {
+            background-color: #c0392b;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .total h3 {
+            font-size: 24px;
+            color: #1a1a2e;
+        }
+
+        .total .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .total .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .receiver-info, .voucher {
+            margin-top: 30px;
+        }
+
+        .receiver-info h4, .voucher h4 {
+            font-size: 24px;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+
+        .receiver-info form, .voucher form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .receiver-info form label, .voucher form label {
+            display: block;
+            font-size: 16px;
+            color: #1a1a2e;
+        }
+
+        .receiver-info form input, .voucher form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .receiver-info .btn-save {
+            grid-column: span 2;
+            background-color: #1a1a2e;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .receiver-info .btn-save:hover {
+            background-color: #111;
+        }
+
+        .voucher-available {
+            grid-column: span 2;
+            color: #1a1a2e;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .payment-methods {
+            margin-top: 30px;
+        }
+
+        .payment-methods h4 {
+            font-size: 24px;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+
+        .payment-methods label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .payment-methods input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .btn-add {
+            background-color: #1a1a2e; /* Updated */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .btn-add:hover {
+            background-color: #111;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #1a1a2e; /* Updated */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background-color: #111;
+        }
+
+        .payment-dropdown {
+            margin-top: 20px;
+        }
+
+        .payment-dropdown-content {
+            display: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .payment-dropdown label {
+            display: block;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .payment-dropdown label:hover {
+            background-color: #e9e9e9;
+        }
+
+        .payment-dropdown-content.show {
+            display: block;
+        }
+
+        .payment-dropdown-content input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .btn-checkout {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-checkout:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer .footer-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        footer .footer-content h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        footer .footer-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        footer .socials {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        footer .socials li {
+            margin: 0 10px;
+        }
+
+        footer .socials li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        footer .footer-bottom {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn"><i class='bx bx-arrow-back'></i> Back</a>
+
+    <!-- Checkout Section -->
+    <section class="checkout" id="checkout">
+        <div class="center-text">
+            <h2>Shopping Cart</h2>
+        </div>
+
+        <div class="checkout-content">
+            <div class="cart-item">
+                <img src="fea1s.jpeg" class="cart-img">
+                <div class="cart-text">
+                    <h5>Brown Polo</h5>
+                    <p>Mens</p>
+                    <h5>₱ 198.00</h5>
+                </div>
+                <div class="quantity">
+                    <input type="number" value="1" min="1">
+                </div>
+                <div class="remove-item">
+                    <button class="btn">Remove</button>
+                </div>
+            </div>
+
+            <div class="cart-item">
+                <img src="fea6s.jpeg" class="cart-img">
+                <div class="cart-text">
+                    <h5>Elegant Blue Polo</h5>
+                    <p>Mens</p>
+                    <h5>₱ 239.00</h5>
+                </div>
+                <div class="quantity">
+                    <input type="number" value="1" min="1">
+                </div>
+                <div class="remove-item">
+                    <button class="btn">Remove</button>
+                </div>
+            </div>
+
+            <!-- Add more cart items as needed -->
+
+            <div class="total">
+                <h3>Total: ₱ 437.00</h3>
+            </div>
+
+            <!-- Receiver's Information -->
+            <div class="receiver-info">
+                <h4>Receiver's Information</h4>
+                <form>
+                    <label for="receiver-name">Name:</label>
+                    <input type="text" id="receiver-name" name="receiver-name">
+
+                    <label for="receiver-address">Address:</label>
+                    <input type="text" id="receiver-address" name="receiver-address">
+
+                    <label for="receiver-phone">Phone Number:</label>
+                    <input type="tel" id="receiver-phone" name="receiver-phone">
+
+                    <label for="receiver-email">Email:</label>
+                    <input type="email" id="receiver-email" name="receiver-email">
+
+                    <button type="button" class="btn-save">Save</button>
+                </form>
+            </div>
+
+            <!-- Voucher Section -->
+            <div class="voucher">
+                <h4>Voucher</h4>
+                <form>
+                    <label for="voucher-code">Voucher Code:</label>
+                    <input type="text" id="voucher-code" name="voucher-code">
+                </form>
+                <div class="voucher-available">VOUCHER AVAILABLE</div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="payment-methods">
+                <h4>Mode of Payment</h4>
+                <label>
+                    <input type="radio" name="payment-method" value="credit-card" checked> Credit Card
+                </label>
+                <label>
+                    <input type="radio" name="payment-method" value="paypal"> PayPal
+                </label>
+                <label>
+                    <input type="radio" name="payment-method" value="bank-transfer"> Bank Transfer
+                </label>
+            </div>
+
+            <!-- Proceed to Checkout -->
+            <button class="btn-checkout">Proceed to Checkout - ₱ 437.00</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>FashionFusion</h3>
+            <p>Follow us on our social media platforms for the latest updates and promotions.</p>
+            <ul class="socials">
+                <li><a href="#"><i class='bx bxl-facebook'></i></a></li>
+                <li><a href="#"><i class='bx bxl-twitter'></i></a></li>
+                <li><a href="#"><i class='bx bxl-instagram'></i></a></li>
+                <li><a href="#"><i class='bx bxl-pinterest'></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 FashionFusion. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        function togglePaymentDropdown() {
+            var dropdown = document.getElementById("payment-method-dropdown");
+            dropdown.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
